@@ -8,51 +8,23 @@ LiquidCrystal_I2C lcd(0x20, 20, 4);
 #define BUTTON     2
 #define LED_UV     3
 
-TaskHandle_t BlinkHandle = NULL;
-TaskHandle_t UvHandle = NULL;
-TaskHandle_t ScreenHandle = NULL;
-
 void TaskBlink(void *pvParameters);
 void TaskUv(void *pvParameters);
 void Screen(void *pvParameters);
-void WaitForButton(void *pvParameters);
 
 void setup() {
-  lcd.init();
+  lcd.init();lcd.init();
   lcd.backlight();
   pinMode(LED_BLINK, OUTPUT);
   pinMode(LED_UV, OUTPUT);
   pinMode(BUTTON, INPUT);
 
-  xTaskCreate(WaitForButton, "WaitButton", 128, NULL, 4, NULL);
-  xTaskCreate(TaskBlink, "Blink", 128, NULL, 1, &BlinkHandle);
-  vTaskSuspend(BlinkHandle);
-  xTaskCreate(TaskUv, "UV", 128, NULL, 2, &UvHandle);
-  vTaskSuspend(UvHandle);
-  xTaskCreate(Screen, "Show", 128, NULL, 1, &ScreenHandle);
-  vTaskSuspend(ScreenHandle);
+  xTaskCreate(TaskBlink, "Blink", 128, NULL, 1, NULL);
+  xTaskCreate(TaskUv, "UV", 128, NULL, 2, NULL);
+  xTaskCreate(Screen, "Show", 128, NULL, 1, NULL);
 }
 
 void loop() {
-}
-
-void WaitForButton(void *pvParameters) {
-  (void)pvParameters;
-  lcd.setCursor(0, 0);
-  lcd.print("Presione boton");
-  
-  for (;;) {
-    if (digitalRead(BUTTON) == HIGH) {
-      lcd.clear();
-      lcd.setCursor(0, 0);
-      lcd.print("Iniciando tareas");
-      vTaskResume(BlinkHandle);
-      vTaskResume(UvHandle);
-      vTaskResume(ScreenHandle);
-      vTaskDelete(NULL);
-    }
-    vTaskDelay(100 / portTICK_PERIOD_MS);
-  }
 }
 
 void TaskBlink(void *pvParameters) {
@@ -85,5 +57,5 @@ void Screen(void *pvParameters) {
     lcd.setCursor(0, 0);
     lcd.print("Hello, world!");
     vTaskDelay(500 / portTICK_PERIOD_MS);
-  }
+  }
 }
