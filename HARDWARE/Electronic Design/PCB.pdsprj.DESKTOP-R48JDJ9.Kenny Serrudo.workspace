@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes'?>
 <WORKSPACE>
- <FRAME activewindow="3">
+ <FRAME activewindow="1">
   <PLACEMENT>2c0000000200000003000000ffffffffffffffffffffffffffffffff950000000a0000006c05000027030000</PLACEMENT>
   <WINDOW type="default" module="ISIS">
    <editor metric="0" gridmajor="25400000" mode="00000000" zoom="0" scale="67" flipped="0" gridminor="508000" gridmode="32" snapidx="2" snap="254000" xcursor="0" orgmode="0" snaprange="189552">
@@ -10,7 +10,7 @@
    </editor>
   </WINDOW>
   <WINDOW type="default" module="ARES">
-   <editor metric="0" gridmajor="2540000" mode="00000021" zoom="-1" scale="178" flipped="0" gridminor="127000" gridmode="32" snapidx="2" snap="63500" xcursor="0" orgmode="0" snaprange="71348">
+   <editor metric="1" gridmajor="10000000" mode="00000000" zoom="-1" scale="203" flipped="0" gridminor="200000" gridmode="32" snapidx="1" snap="50000" xcursor="0" orgmode="0" snaprange="62561">
     <world y1="-12700000" x1="-15240000" y2="12700000" x2="15240000"/>
     <centre x="-1301750" y="-349250"/>
     <origin x="0" y="0"/>
@@ -26,7 +26,7 @@
   <WINDOW type="default" module="STARTUP"/>
  </FRAME>
  <MODULE name="ARES">
-  <editor metric="0" gridmajor="2540000" mode="00000021" zoom="-1" scale="178" flipped="0" gridminor="127000" gridmode="32" snapidx="2" snap="63500" xcursor="0" orgmode="0" snaprange="71348">
+  <editor metric="1" gridmajor="10000000" mode="00000000" zoom="-1" scale="203" flipped="0" gridminor="200000" gridmode="32" snapidx="1" snap="50000" xcursor="0" orgmode="0" snaprange="62561">
    <world y1="-12700000" x1="-15240000" y2="12700000" x2="15240000"/>
    <centre x="-1301750" y="-349250"/>
    <origin x="0" y="0"/>
