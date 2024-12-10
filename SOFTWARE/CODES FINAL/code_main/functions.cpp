@@ -29,6 +29,8 @@ void initializeComponents(){
   pinMode(BUTTON4 ,  INPUT); //up
   pinMode(BUTTON5 ,  INPUT); //down
   pinMode(LED     , OUTPUT);
+  attachInterrupt(digitalPinToInterrupt(BUTTON1), parada, CHANGE
+  );
   lcd.createChar(0, arrow_char);
 }
 void initState(){
@@ -166,7 +168,11 @@ void stop(){
   lcd.setCursor(0,0);
   lcd.print("FINISH   PROCESS");
 }
-
+void parada(){
+  time_s=0;
+  time_m=0;
+  level=4;
+}
 bool start(){
   bool pulse=1;
   if (digitalRead(BUTTON2)==0){

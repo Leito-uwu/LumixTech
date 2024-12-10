@@ -19,7 +19,7 @@
 #define COLUMNS   16
 
 
-#define WAIT1       500
+#define WAIT1        500
 #define WAIT_BLINK   50
 #define DB          185
 extern int pos;
@@ -44,5 +44,6 @@ bool up();
 bool down();
 bool enter();
 void stop();
+void parada();
 bool start();
 #endif
