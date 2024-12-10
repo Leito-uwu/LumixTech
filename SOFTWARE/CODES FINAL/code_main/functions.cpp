@@ -141,11 +141,21 @@ void counting(){
         if (time_m > 0 ){
           time_s = 59;
           time_m --;
+          if (time_m==0 && time_s==0){
+          lcd.clear();
+          analogWrite(UV,0);
+          break;
+    }
         }
       }
       else{
         time_s--;
         
+        if (time_m==0 && time_s==0){
+        lcd.clear();
+        analogWrite(UV,0);
+        break;
+        }
       }
     lcd.clear();
     delay(50);
@@ -171,7 +181,24 @@ void stop(){
 void parada(){
   time_s=0;
   time_m=0;
-  level=4;
+  level=4;    
+    if (stop()==0){
+      level==4;
+      break;
+    }
+  }
+}
+
+bool stop(){
+  bool pulse=1;
+  if (digitalRead(BUTTON1)==0){
+    if((millis()-last_time) > DB ){
+      pulse=0;
+      last_time=millis();
+      lcd.clear();
+    }
+  }
+  return pulse;
 }
 bool start(){
   bool pulse=1;
