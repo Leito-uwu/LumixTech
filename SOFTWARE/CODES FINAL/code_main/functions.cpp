@@ -29,6 +29,8 @@ void initializeComponents(){
   pinMode(BUTTON4 ,  INPUT); //up
   pinMode(BUTTON5 ,  INPUT); //down
   pinMode(LED     , OUTPUT);
+  attachInterrupt(digitalPinToInterrupt(BUTTON1), parada, CHANGE
+  );
   lcd.createChar(0, arrow_char);
 }
 void initState(){
@@ -148,6 +150,7 @@ void counting(){
       }
       else{
         time_s--;
+        
         if (time_m==0 && time_s==0){
         lcd.clear();
         analogWrite(UV,0);
@@ -163,7 +166,22 @@ void counting(){
     lcd.setCursor(9,0);
     lcd.print(time_s);
     delay(950);
-    
+    if (time_m==0 && time_s==0){
+        lcd.clear();
+        level=4;
+        analogWrite(UV,0);
+        break;
+        }
+  }
+}
+void stop(){
+  lcd.setCursor(0,0);
+  lcd.print("FINISH   PROCESS");
+}
+void parada(){
+  time_s=0;
+  time_m=0;
+  level=4;    
     if (stop()==0){
       level==4;
       break;
